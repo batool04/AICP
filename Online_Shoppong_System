@@ -1,4 +1,13 @@
-TASK 1:
+TASK 1:– Setting up the system and ordering the main items.
+Write a program to:
+use arrays to store the item code, description and price
+allow a customer to choose one case, one RAM and one Main Hard Disk Drive
+calculate the price of the computer using the cost of the chosen items and the
+basic set of components
+store and output the chosen items and the price of the computer.
+
+CODE:
+
 Item_code = ['A1', 'A2', 'B1', 'B2', 'B3', 'C1', 'C2', 'C3', 'D1', 'D2', 'E1', 'E2', 'E3', 'F1', 'F2', 'G1', 'G2']
 Description = ['Compact', 'Tower', '8GB', '16GB', '32GB', '1 TB HDD', '2TB HDD', '4TB HDD', '240 GB SSD', '240 GB SSD',
                '1 TB HDD', '2TB HDD', '4TB HD', 'DVD/Blu-Ray Player', 'DVD/Blu-Ray Re-written', 'Standard Version',
@@ -35,7 +44,14 @@ else:
     print('Invalid input. Please choose one item from each category.')
 
 
-TASK2:
+TASK2:Ordering additional items.
+Extend TASK 1 to:
+allow a customer to choose whether to purchase any items from the other
+categories – if so, which item(s)
+update the price of the computer
+store and output the additional items and the new price of the computer
+
+CODE:
 Item_code = ['A1', 'A2', 'B1', 'B2', 'B3', 'C1', 'C2', 'C3', 'D1', 'D2', 'E1', 'E2', 'E3', 'F1', 'F2', 'G1', 'G2']
 Description = ['Compact', 'Tower', '8GB', '16GB', '32GB', '1 TB HDD', '2TB HDD', '4TB HDD', '240 GB SSD', '240 GB SSD',
                '1 TB HDD', '2TB HDD', '4TB HD', 'DVD/Blu-Ray Player', 'DVD/Blu-Ray Re-written', 'Standard Version',
@@ -96,7 +112,17 @@ else:
     print('Invalid input. Please choose one item from each category.')
 
 
-TASK3:
+TASK3: Offering discounts.
+Extend TASK 2 to:
+apply a 5% discount to the price of the computer if the customer has bought only
+one additional item.
+apply a 10% discount to the price of the computer if the customer has bought two
+or more additional items.
+output the amount of money saved and the new price of the computer after the
+discount.
+
+CODE:
+
 Item_code = ['A1', 'A2', 'B1', 'B2', 'B3', 'C1', 'C2', 'C3', 'D1', 'D2', 'E1', 'E2', 'E3', 'F1', 'F2', 'G1', 'G2']
 Description = ['Compact', 'Tower', '8GB', '16GB', '32GB', '1 TB HDD', '2TB HDD', '4TB HDD', '240 GB SSD', '240 GB SSD',
                '1 TB HDD', '2TB HDD', '4TB HD', 'DVD/Blu-Ray Player', 'DVD/Blu-Ray Re-written', 'Standard Version',
