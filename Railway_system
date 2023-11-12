@@ -1,0 +1,150 @@
+TASK 1:
+Up_journey=['9:00','11:00','13:00','15:00']
+Down_journey=['10:00','12:00','14:00','16:00']
+# Tracking total passengers for both up and down journey
+total_passengers = {journey: 0 for journey in Up_journey + Down_journey}
+# Calculating total amount earned for both up & down journey
+total_money = {journey: 0 for journey in Up_journey + Down_journey}
+
+def Booking_System(journey, num_of_passengers):
+  global total_passengers, total_money
+  is_up = journey in Up_journey 
+
+#Calculating cost
+  cost_per_ticket=25
+  cost=num_of_passengers * cost_per_ticket
+  total_passengers[journey] += num_of_passengers
+  total_money[journey] += cost
+
+Booking_System('9:00', 50)
+Booking_System('11:00', 30)
+Booking_System('13:00', 40)
+
+print("\n::Start of the day::")
+for journey in Up_journey + Down_journey:
+    print(f"{journey} - Total Passengers: {total_passengers[journey]}, Total Money Earned: ${total_money[journey]}")
+
+TASK2:
+Up_journey = ['09:00', '11:00', '13:00', '15:00']
+Down_journey = ['10:00', '12:00', '14:00', '16:00']
+
+# Dictionary to track the number of passengers for each journey
+total_passengers = {journey: 0 for journey in Up_journey + Down_journey}
+
+# Dictionary to track the money earned for each journey
+total_money = {journey: 0 for journey in Up_journey + Down_journey}
+
+# Function to book tickets for a journey
+def Booking_System(journey, num_passengers):
+    global total_passengers, total_money
+
+    # Check if the journey is up or down
+    is_up = journey in Up_journey
+
+    # Calculate cost and update totals
+    cost_per_ticket = 25
+    cost = num_passengers * cost_per_ticket
+    total_passengers[journey] += num_passengers
+    total_money[journey] += cost
+
+    # Display information
+    print(f"\nBooking Summary for {journey}")
+    print(f"Tickets booked: {num_passengers}")
+    print(f"Total money earned: ${cost}")
+
+# Function to purchase tickets
+def purchase_tickets():
+    global total_passengers, total_money
+
+    # Input the journey and number of passengers
+    journey = input("Enter the journey time (e.g., '09:00' or '15:00'): ")
+    num_passengers = int(input("Enter the number of passengers: "))
+
+    # Check if the journey is valid
+    if journey not in Up_journey + Down_journey:
+        print("Invalid journey time. Please enter a valid time.")
+        return
+
+    # Check if there are enough available seats
+    available_seats = 80 - total_passengers[journey]
+    if num_passengers > available_seats:
+        print(f"Sorry, only {available_seats} seats available for the {journey} journey.")
+        return
+
+    # Book tickets
+    Booking_System(journey, num_passengers)
+
+# Example usage:
+purchase_tickets()
+
+# Display updated data after ticket purchase
+print("\nUpdated Data:")
+for journey in Up_journey + Down_journey:
+    print(f"{journey} - Total Passengers: {total_passengers[journey]}, Total Money Earned: ${total_money[journey]}")
+
+TASK3:
+Up_journey = ['09:00', '11:00', '13:00', '15:00']
+Down_journey = ['10:00', '12:00', '14:00', '16:00']
+
+# Dictionary to track the number of passengers for each journey
+total_passengers = {journey: 0 for journey in Up_journey + Down_journey}
+
+# Dictionary to track the money earned for each journey
+total_money = {journey: 0 for journey in Up_journey + Down_journey}
+
+# Function to book tickets for a journey
+def Booking_System(journey, num_passengers):
+    global total_passengers, total_money
+
+    # Check if the journey is up or down
+    is_up = journey in Up_journey
+
+    # Calculate cost and update totals
+    cost_per_ticket = 25
+    cost = num_passengers * cost_per_ticket
+    total_passengers[journey] += num_passengers
+    total_money[journey] += cost
+
+    # Display information
+    print(f"\nBooking Summary for {journey}")
+    print(f"Tickets booked: {num_passengers}")
+    print(f"Total money earned: ${cost}")
+
+# Function to purchase tickets
+def purchase_tickets():
+    global total_passengers, total_money
+
+    # Input the journey and number of passengers
+    journey = input("Enter the journey time (e.g., '09:00' or '15:00'): ")
+    num_passengers = int(input("Enter the number of passengers: "))
+
+    # Check if the journey is valid
+    if journey not in Up_journey + Down_journey:
+        print("Invalid journey time. Please enter a valid time.")
+        return
+
+    # Check if there are enough available seats
+    available_seats = 80 - total_passengers[journey]
+    if num_passengers > available_seats:
+        print(f"Sorry, only {available_seats} seats available for the {journey} journey.")
+        return
+
+    # Book tickets
+    Booking_System(journey, num_passengers)
+def Day_end_summary():
+  global total_money, total_passengers
+  for journey in Up_journey + Down_journey:
+    print(f"{journey} - Total Passengers: {total_passengers[journey]}, Total Money Earned: ${total_money[journey]}")
+  total_passengers_day = sum(total_passengers.values())
+  Total_money_earned = sum(total_money.values())
+  print(f"\nTotal Passengers for the Day: {total_passengers_day}")
+  print(f"Total Money Earned for the Day: ${Total_money_earned}")
+
+    # Find and display the train journey with the most passengers
+  max_passengers_journey = max(total_passengers, key=total_passengers.get)
+  print(f"\nTrain Journey with the Most Passengers: {max_passengers_journey} - {total_passengers[max_passengers_journey]} passengers")
+
+# Example usage:
+purchase_tickets()
+purchase_tickets()
+Day_end_summary()
