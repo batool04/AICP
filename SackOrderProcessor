@@ -1,0 +1,148 @@
+Task: 
+The manager of a building materials delivery service needs a program to check the contents and weight of sacks to ensure that correct orders are made up for delivery. A price for the order will be calculated.
+Write and test a program for the manager.
+Your program must include appropriate prompts for the entry of data. Error messages and other output need to be set out clearly.
+All variables, constants and other identifiers must have meaningful names.
+You will need to complete these three tasks. Each task must be fully tested.
+
+TASK 1 – Check the contents and weight of a single sack Each sack must obey the following rules to be accepted:
+contain cement, gravel or sand, with a letter on the side for easy identification C - cement
+G - gravel S - sand
+sand or gravel must weigh over 49.9 and under 50.1 kilograms cement must weigh over 24.9 and under 25.1 kilograms
+Input and store the weight and contents for one sack. The contents must be checked and an incorrect sack rejected. The weight must be validated on entry and an overweight or underweight sack rejected. Output the contents and weight of an accepted sack. If a sack is rejected, output the reason(s).
+
+TASK 2 – Check a customer’s order for delivery
+
+Input and store the number of sacks of each type required for the order. Use TASK 1 to check the contents and weight of each sack. Ensure that the delivery contains the correct number and type of sacks for the order.
+
+Output the total weight of the order.
+Output the number of sacks rejected from the order.
+
+TASK 3 – Calculate the price for a customer’s order
+
+Extend TASK 2 to calculate a price for an order. Prices for the sacks are as follows: regular price for each sack
+cement, $3 gravel, $2 sand, $2
+discount price for a special pack containing 1 sack of cement, 2 sacks of sand and 2 sacks of gravel,
+$10
+Calculate and output the regular price for the order. Check how many special packs are in the order. If a discount price applies then output the new price for the order and the amount saved.
+
+
+
+##SOLUTION##:
+
+
+
+To check the weight and content of a single sack:
+
+
+Code:
+def check_sack(contents, weight):
+    valid_contents = ['C', 'G', 'S']
+    
+    if not all(char in valid_contents for char in contents):
+        return "Invalid contents. Must be C (cement), G (gravel), or S (sand)."
+
+    if 'C' in contents and not (24.9 < weight < 25.1):
+        return "Invalid weight for cement sack. Must be between 24.9 and 25.1 kilograms."
+
+    if any(char in contents for char in ['G', 'S']) and not (49.9 < weight < 50.1):
+        return "Invalid weight for gravel or sand sack. Must be between 49.9 and 50.1 kilograms."
+
+    return f"Accepted sack - Contents: {contents}, Weight: {weight} kilograms."
+
+# Example usage
+sack_contents = input("Enter contents (C, G, or S): ").upper()
+sack_weight = float(input("Enter weight in kilograms:"))
+
+result = check_sack(sack_contents, sack_weight)
+print(result)
+
+
+
+Check customer's order for delivery:
+
+
+Code:
+def check_sack(contents, weight):
+    valid_contents = {'C': (24.9, 25.1), 'G': (49.9, 50.1), 'S': (49.9, 50.1)}
+
+    if contents not in valid_contents:
+        return f"Invalid contents. Must be {', '.join(valid_contents.keys())}."
+
+    weight_range = valid_contents[contents]
+    if not (weight_range[0] < weight < weight_range[1]):
+        return f"Invalid weight for {contents} sack. Must be between {weight_range[0]} and {weight_range[1]} kilograms."
+
+    return True
+
+
+def check_order(order):
+    total_weight = 0
+    rejected_sacks = 0
+
+    for sack_type, quantity in order.items():
+        for _ in range(quantity):
+            sack_contents = input(f"Enter contents for {sack_type} sack (C, G, or S): ").upper()
+            sack_weight = float(input(f"Enter weight in kilograms for {sack_type} sack: "))
+
+            result = check_sack(sack_contents, sack_weight)
+
+            if result is True:
+                total_weight += sack_weight
+            else:
+                rejected_sacks += 1
+                print(result)
+
+    print(f"\nTotal weight of the order: {total_weight} kilograms.")
+    print(f"Number of sacks rejected: {rejected_sacks}")
+
+
+order = {'C': 1, 'G': 1, 'S': 1}
+check_order(order)
+
+
+
+Calculate the price for customer's order:
+
+Code:
+def check_sack(contents, weight):
+    valid_contents = {'C': (24.9, 25.1), 'G': (49.9, 50.1), 'S': (49.9, 50.1)}
+
+    if contents not in valid_contents:
+        return f"Invalid contents. Must be {', '.join(valid_contents.keys())}."
+
+    weight_range = valid_contents[contents]
+    if not (weight_range[0] < weight < weight_range[1]):
+        return f"Invalid weight for {contents} sack. Must be between {weight_range[0]} and {weight_range[1]} kilograms."
+
+    return True
+
+
+def check_order(order):
+    total_weight = 0
+    total_price = 0
+    rejected_sacks = 0
+
+    sack_prices = {'C': 3, 'G': 2, 'S': 2}
+
+    for sack_type, quantity in order.items():
+        for _ in range(quantity):
+            sack_contents = input(f"Enter contents for {sack_type} sack (C, G, or S): ").upper()
+            sack_weight = float(input(f"Enter weight in kilograms for {sack_type} sack: "))
+
+            result = check_sack(sack_contents, sack_weight)
+
+            if result is True:
+                total_weight += sack_weight
+                total_price += sack_prices[sack_contents]
+            else:
+                rejected_sacks += 1
+                print(result)
+
+    print(f"\nTotal weight of the order: {total_weight} kilograms.")
+    print(f"Number of sacks rejected: {rejected_sacks}")
+    print(f"Total price for the order: ${total_price}")
+
+
+order = {'C': 1, 'G': 1, 'S': 1}
+check_order(order)
